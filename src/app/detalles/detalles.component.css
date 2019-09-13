@@ -1,0 +1,15 @@
+.rounded{
+  height: 250px;
+  width: 250px;
+  margin: 5px;
+  border: 2px solid black;
+}
+
+.tab-content{
+  height: 400px;
+}
+
+.calificacion img{
+  height: 25px;
+  width: 25px;
+}

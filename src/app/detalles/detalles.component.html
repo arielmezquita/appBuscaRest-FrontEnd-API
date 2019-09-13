@@ -1,0 +1,103 @@
+<div class="container">
+      <hr class="my-4">
+      <h3>{{ detalle.name }}</h3>
+
+      <!-- Mostrar estrellas de calificacion segun su puntuacion -->
+      <div class="calificacion">
+        <ng-container [ngSwitch]="detalle.price">
+            <ng-container *ngSwitchCase="1">
+                <p><img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_empty.png">
+                   <img src="../../assets/img/s_empty.png">
+                   <img src="../../assets/img/s_empty.png">
+                   <img src="../../assets/img/s_empty.png">
+                </p>
+            </ng-container>
+            <ng-container *ngSwitchCase="2">
+                <p><img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_empty.png">
+                   <img src="../../assets/img/s_empty.png">
+                   <img src="../../assets/img/s_empty.png">
+                </p>
+            </ng-container>
+            <ng-container *ngSwitchCase="3">
+                <p><img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_empty.png">
+                   <img src="../../assets/img/s_empty.png">
+                </p>
+            </ng-container>
+            <ng-container *ngSwitchCase="4">
+                <p><img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_empty.png">
+                </p>
+            </ng-container>
+            <ng-container *ngSwitchCase="5">
+                <p><img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                   <img src="../../assets/img/s_full.png">
+                </p>
+            </ng-container>
+          <ng-container *ngSwitchDefault>0</ng-container>
+        </ng-container>
+      </div>
+
+      <img class="rounded" src="{{ detalle.image_url }}" alt="">
+</div>
+
+  <div class="container">
+    <br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">Informacion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">Ubicacion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu2">Menu</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div id="home" class="container tab-pane active" style="text-align: justify"><br>
+        <h3>Informacion</h3>
+        <div class="card-body">
+          <p>Phone: {{ detalle.phone }}</p>
+          <p>Postal Code: {{ detalle.postal_code }}</p>
+          <p>Address: {{ detalle.address }}</p>
+          <p>Area: {{ detalle.area }}</p>
+          <p>City: {{ detalle.city }}</p>
+          <p>Country: {{ detalle.country }}</p>
+          <a href="{{ detalle.reserve_url }}" class="btn btn-primary">Reservar</a>
+        </div>
+      </div>
+      <div id="menu1" class="container tab-pane fade"><br>
+
+         <!-- Mapa de ubicacion segun su location -->
+        <h3>Ubicacion</h3>
+        <app-location></app-location>
+        </div>
+      <div id="menu2" class="container tab-pane fade"><br>
+        <h3>Menu</h3>
+
+        <h5 style="text-align: justify">Conming soon....</h5>
+        </div>
+    </div>
+  </div>
+
+  <hr>
+
+ <!-- En caso de no seleccionar ningun restaurante -->
+<ng-template #vacio>
+  <h1>No estas seleccionando ningun restaurante</h1>
+</ng-template>

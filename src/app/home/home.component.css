@@ -1,0 +1,18 @@
+.list-rest{
+  padding-top: 5px;
+  padding-left: 250px;
+}
+hr{
+  margin-top:20px;
+  margin-bottom:20px;
+  height:1px;
+  width:100%;
+  border-top:2px solid gray;
+}
+
+.calificacion img{
+  height: 25px;
+  width: 25px;
+}
+
+

@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>BuscaRest.do</h1>
+  <p>Encuentra tu restaurante favorito en un solo lugar</p>
+</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="navbar-brand" href="#" [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" [routerLink]="['/reservas']" routerLinkActive="router-link-active" >Reservas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" [routerLink]="['/info']" routerLinkActive="router-link-active" >Info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contacto</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="pages" style="text-align: center">
+  <router-outlet></router-outlet>
+</div>
+
