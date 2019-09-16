@@ -1,12 +1,13 @@
+<div class="content-welcome">
 <br>
 <h3>Menu de Restaurantes</h3>
 
 <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <label class="mr-sm-2">Seleccionar un pais: </label>
-         <select [(ngModel)]="country" (ngModelChange) = "getCiudades($event)" data-live-search="true" class="form-control">
-            <option [value]="null">Paises</option>
+          <label>Seleccionar un pais: </label>
+          <select [(ngModel)]="country" (ngModelChange) = "getCiudades($event)" data-live-search="true" class="form-control">
+            <option [value]="null" disabled selected>Paises</option>
             <option *ngFor= "let pais of paises, let i = index" [value]="pais">
               <!-- Convertir siglas de paises a Nombres Completos segun su codigo -->
               <ng-container [ngSwitch]="pais">
@@ -31,16 +32,18 @@
       </div>
 
     <div class="col-sm-6">
-      <label class="mr-sm-2">Seleccionar una ciudad: </label>
+      <label>Seleccionar una ciudad: </label>
       <select [(ngModel)]= "ciudadId" (ngModelChange) = "getRestaurant($event)" data-live-search="true" class="form-control">
-        <option [value]="null">Ciudades</option>
-        <option *ngFor= "let ciudad of ciudades, let i = index" [value]="ciudad.city">{{ciudad.city}}</option>
+        <option [value]="null" disabled selected>Ciudades</option>
+        <option *ngFor= "let ciudad of ciudades, let i = index" [value]="ciudad">{{ ciudad }}</option>
       </select>
     </div>
   </div>
 </div>
 <br>
+</div>
 
+<!--Contenedor para Listado de Restaurantes-->
 <div class="list-rest">
   <div class="card mb-3" style="max-width: 840px;">
     <div *ngFor="let rest of restaurants; let i =index" class="row no-gutters">
@@ -99,8 +102,26 @@
               </ng-container>
             </div>
 
-          <p class="card-text">City: {{ rest.city }} </p>
-          <p class="card-text">Pais: {{ rest.country }} </p>
+          <p class="card-text">Ciudad: {{ rest.city }} </p>
+          <p class="card-text">Pais:
+                          <!-- Convertir siglas de paises a Nombres Completos segun su codigo -->
+                          <ng-container [ngSwitch]="rest.country">
+                              <ng-container *ngSwitchCase="'AW'">Aruba</ng-container>
+                              <ng-container *ngSwitchCase="'CA'">Canada</ng-container>
+                              <ng-container *ngSwitchCase="'CN'">China</ng-container>
+                              <ng-container *ngSwitchCase="'GP'">Guadalupe</ng-container>
+                              <ng-container *ngSwitchCase="'HK'">Hong Kong</ng-container>
+                              <ng-container *ngSwitchCase="'KN'">San Cristóbal y Nieves</ng-container>
+                              <ng-container *ngSwitchCase="'KY'">Islas Caiman</ng-container>
+                              <ng-container *ngSwitchCase="'MO'">Macao</ng-container>
+                              <ng-container *ngSwitchCase="'MX'">Mexico</ng-container>
+                              <ng-container *ngSwitchCase="'MY'">Malasia</ng-container>
+                              <ng-container *ngSwitchCase="'SV'">El Salvador</ng-container>
+                              <ng-container *ngSwitchCase="'US'">Estados Unidos</ng-container>
+                              <ng-container *ngSwitchCase="'VI'">Islas Vírgenes</ng-container>
+                              <ng-container *ngSwitchDefault>Default</ng-container>
+                            </ng-container>
+          </p>
 
           <!-- Mostrar mas detalles sobre el restaurante -->
           <button class="btn btn-dark" routerLink="/detalles" [queryParams]="rest">Ver mas</button>

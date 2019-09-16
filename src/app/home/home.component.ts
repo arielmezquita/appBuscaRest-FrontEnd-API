@@ -10,6 +10,7 @@ import { DataService } from '../services/data.service';
 export class HomeComponent implements OnInit {
 
   restaurants = [];
+  cities: any;
   ciudades = [];
 
   country: any;
@@ -28,8 +29,16 @@ export class HomeComponent implements OnInit {
   }
   getCiudades(country) {
     const eso = this.data.getCiudad(this.country).subscribe((data: any) => {
-    this.ciudades = data.restaurants;
-    console.log(this.ciudades);
+    this.cities = data;
+    console.log(this.cities);
+    for( let i = 0 ; i < this.cities.restaurants.length; i++ ) {
+
+      if(this.ciudades.indexOf(this.cities.restaurants[i].city) === -1 ) {
+        this.ciudades.push(this.cities.restaurants[i].city);
+        console.log(this.cities.restaurants[i].city);
+      }
+     }
+
     });
 
   }

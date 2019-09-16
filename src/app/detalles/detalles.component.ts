@@ -10,6 +10,11 @@ export class DetallesComponent implements OnInit {
   detalle = {};
   constructor(public activa: ActivatedRoute, public route: Router) { }
 
+
+
+
+
+
   ngOnInit() {
     this.activa.queryParams.subscribe(data => {
       if (Object.keys(data).length === 0) {

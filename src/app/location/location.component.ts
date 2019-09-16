@@ -40,7 +40,7 @@ export class LocationComponent implements OnInit {
     });
     map.resize();
 
-    const size = 100;
+    const size = 150;
 
     var pulsingDot = {
     width: size,

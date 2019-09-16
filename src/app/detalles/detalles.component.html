@@ -72,12 +72,32 @@
       <div id="home" class="container tab-pane active" style="text-align: justify"><br>
         <h3>Informacion</h3>
         <div class="card-body">
-          <p>Phone: {{ detalle.phone }}</p>
-          <p>Postal Code: {{ detalle.postal_code }}</p>
-          <p>Address: {{ detalle.address }}</p>
+          <p>Telefono: {{ detalle.phone }}</p>
+          <p>Codigo Postal: {{ detalle.postal_code }}</p>
+          <p>Direccion: {{ detalle.address }}</p>
           <p>Area: {{ detalle.area }}</p>
-          <p>City: {{ detalle.city }}</p>
-          <p>Country: {{ detalle.country }}</p>
+          <p>Ciudad: {{ detalle.city }}</p>
+
+          <p class="card-text">Pais:
+            <!-- Convertir siglas de paises a Nombres Completos segun su codigo -->
+            <ng-container [ngSwitch]="detalle.country">
+                <ng-container *ngSwitchCase="'AW'">Aruba</ng-container>
+                <ng-container *ngSwitchCase="'CA'">Canada</ng-container>
+                <ng-container *ngSwitchCase="'CN'">China</ng-container>
+                <ng-container *ngSwitchCase="'GP'">Guadalupe</ng-container>
+                <ng-container *ngSwitchCase="'HK'">Hong Kong</ng-container>
+                <ng-container *ngSwitchCase="'KN'">San Cristóbal y Nieves</ng-container>
+                <ng-container *ngSwitchCase="'KY'">Islas Caiman</ng-container>
+                <ng-container *ngSwitchCase="'MO'">Macao</ng-container>
+                <ng-container *ngSwitchCase="'MX'">Mexico</ng-container>
+                <ng-container *ngSwitchCase="'MY'">Malasia</ng-container>
+                <ng-container *ngSwitchCase="'SV'">El Salvador</ng-container>
+                <ng-container *ngSwitchCase="'US'">Estados Unidos</ng-container>
+                <ng-container *ngSwitchCase="'VI'">Islas Vírgenes</ng-container>
+                <ng-container *ngSwitchDefault>Default</ng-container>
+              </ng-container>
+</p>
+
           <a href="{{ detalle.reserve_url }}" class="btn btn-primary">Reservar</a>
         </div>
       </div>
@@ -85,6 +105,7 @@
 
          <!-- Mapa de ubicacion segun su location -->
         <h3>Ubicacion</h3>
+        <p>Direccion: {{ detalle.address }}</p>
         <app-location></app-location>
         </div>
       <div id="menu2" class="container tab-pane fade"><br>
@@ -96,6 +117,7 @@
   </div>
 
   <hr>
+
 
  <!-- En caso de no seleccionar ningun restaurante -->
 <ng-template #vacio>
